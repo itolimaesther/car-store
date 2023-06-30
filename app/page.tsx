@@ -17,14 +17,13 @@ export default function Home() {
   function fetchCars() {
   const options = {
   method: 'GET',
-  // url: 'https://cars-by-api-ninjas.p.rapidapi.com/v1/cars',
   contentType: 'application/json',
   headers: {
     'X-Api-Key': 'oYvlTVhuPetUXh9ToHtBAg==XAmbzvMn9NhonMVz',
   }
 };
    axios
-    .get('https://api.api-ninjas.com/v1/cars?limit=10&model=camry', options)
+    .get('https://api.api-ninjas.com/v1/cars?limit=10&model=carrera', options)
     .then(async (response) => {
       const res = await response.data
       console.log(res, "res")
