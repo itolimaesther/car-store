@@ -4,7 +4,8 @@
 import { CarProps } from '@/types';
 import Image from 'next/image';
 import { Fragment } from 'react';
-import {Dialog, Transition  } from '@headlessui/react';
+import { Dialog, Transition } from '@headlessui/react';
+import { generateCarImageUrl } from '@/utils';
 
 interface CarDetailsProps {
     isOpen: boolean;
@@ -57,7 +58,7 @@ const CarDetails = ({isOpen, closeModal, car}: CarDetailsProps) => {
                                   <div className="flex-1 flex flex-col gap-3">
                                       <div className="relative bg-cover h-40 bg-center w-full bg-pattern rounded-lg ">
                                           <Image
-                                                src="/hero.png" width={150} height={150}
+                                                src={generateCarImageUrl(car)} width={150} height={150}
                                                 alt="car model" priority
                                                 className="object-cover"
                                             />
@@ -65,21 +66,21 @@ const CarDetails = ({isOpen, closeModal, car}: CarDetailsProps) => {
                                       <div className="flex gap-3">
                                           <div className="flex-1 relative w-full h-24 bg-primary-blue-100 rounded-lg">
                                               <Image
-                                                src="/hero.png" width={150} height={150}
+                                                src={generateCarImageUrl(car, '29')} width={150} height={150}
                                                 alt="car model" priority
                                                 className="object-cover"
                                             />
                                           </div>
                                           <div className="flex-1 relative w-full h-24 bg-primary-blue-100 rounded-lg">
                                               <Image
-                                                src="/hero.png" width={150} height={150}
+                                                src={generateCarImageUrl(car, '23')} width={150} height={150}
                                                 alt="car model" priority
                                                 className="object-cover"
                                             />
                                           </div>
                                           <div className="flex-1 relative w-full h-24 bg-primary-blue-100 rounded-lg">
                                               <Image
-                                                src="/hero.png" width={150} height={150}
+                                                src={generateCarImageUrl(car, '13')} width={150} height={150}
                                                 alt="car model" priority
                                                 className="object-cover"
                                             />
