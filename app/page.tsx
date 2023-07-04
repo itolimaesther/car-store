@@ -4,17 +4,19 @@ import Image from 'next/image'
 import { Hero, CustomFilter, SearchBar } from '@/components'
 // import { fetchCars } from '@/utils'
 import { CarCard } from '@/components'
-import { CarProps } from '@/types'
+import { CarProps, FilterProps } from '@/types'
 import axios from 'axios';
+import { fuels, yearsOfProduction } from '@/constants'
 
-export default function Home() {
+export default function Home({searchParams}: any) {
   // const allCars =  fetchCars();
   const [arr, setArr] = useState<any | null>(null);
 
-
   
 
-  function fetchCars() {
+  function fetchCars(filter: FilterProps) {
+    const {manufacturer, model, year, limit, fuel} = filter
+  
   const options = {
   method: 'GET',
   contentType: 'application/json',
@@ -23,7 +25,7 @@ export default function Home() {
   }
 };
    axios
-    .get('https://api.api-ninjas.com/v1/cars?limit=10&model=carrera', options)
+    .get(`https://api.api-ninjas.com/v1/cars?make=${manufacturer}&year=${year}&limit=${limit}&fuel_type=${fuel}&model=${model}`, options)
     .then(async (response) => {
       const res = await response.data
       console.log(res, "res")
@@ -40,14 +42,21 @@ export default function Home() {
     // } catch (error) {
     //     console.error(error);
     // }
-}
+  }
+  
 
 
 
 const isDataEmpty = !Array.isArray(arr) || arr.length < 1 || !arr;
 
 useEffect(() => {
-  fetchCars();
+  fetchCars({
+    manufacturer: searchParams.manufacturer || '',
+    year: searchParams.year || 2022,
+    fuel: searchParams.fuel || '',
+    limit: searchParams.limit || 10,
+    model: searchParams.model || '',
+  });
 }, [])
 
 
@@ -65,9 +74,12 @@ useEffect(() => {
           <div className="home__filter-container">
             <CustomFilter
               title="fuel"
+              options={fuels}
+
             />
             <CustomFilter
               title="year"
+              options={yearsOfProduction}
             />
 
             {!isDataEmpty ? (
