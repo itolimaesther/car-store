@@ -17,13 +17,28 @@ export interface OptionProps {
 }
 
 export interface CustomFilterProps {
-    title: string,
-    options: OptionProps[]
+    // title: string,
+    options: OptionProps[],
+    setFilter: (selected: any) => void;
 }
 
+// export interface SearchManufacturerOptionProps {
+//     searchManufacturer: string
+//     setSearchManufacturer: (searchManufacturer: string) => void
+// }
+
 export interface SearchManufacturerProps {
-    manufacturer: string
-    setManufacturer: (manufacturer: string )=> void
+    selected: string;
+    setSelected: (selected: string) => void;
+    // searchManufacturer: string
+    // setSearchManufacturer: (searchManufacturer: string) => void
+    // selected: SearchManufacturerOptionProps["searchManufacturer"],
+    // setSelected: SearchManufacturerOptionProps["setSearchManufacturer"]
+}
+
+export interface SearchBarProps {
+  setManufacturer: (manufacturer: string) => void;
+  setModel: (model: string) => void;
 }
 
 export interface CarProps {
@@ -48,4 +63,10 @@ export interface FilterProps {
     fuel: string,
     limit: number,
     model: string,
+}
+
+export interface ShowMoreProps {
+    pageNumber: number,
+    isNext: boolean,
+    setLimit: (limit: number) => void
 }
