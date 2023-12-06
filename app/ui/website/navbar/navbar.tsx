@@ -6,19 +6,14 @@ import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { NAV_LINKS } from "@/constants";
 import Image from "next/image";
 import Link from "next/link";
-import CustomButton from "./CustomButton";
+import CustomButton from "../../../../components/CustomButton";
 import { Menu, Transition, Dialog } from "@headlessui/react";
-import Dropdown from "./Dropdown";
-import { SubProps } from "@/types";
-import CustomOutlineButton from "./CustomOutlineButton";
+import Dropdown from "../../../../components/Dropdown";
+import CustomOutlineButton from "../../../../components/CustomOutlineButton";
 
 function classNames(...classes: any[]) {
 	return classes.filter(Boolean).join(" ");
 }
-
-// interface SubMenuProps {
-// 	category: SubProps;
-// }
 
 const Navbar = () => {
 	const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -89,7 +84,6 @@ const Navbar = () => {
 						type="button"
 						title="Sign in"
 						variant="btn_blue_outline"
-						
 					/>
 					<CustomButton
 						type="button"

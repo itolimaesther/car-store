@@ -8,14 +8,14 @@ type ButtonProps = {
 	full?: boolean;
 };
 
-const CustomButton = ({ type, title, variant, full }: ButtonProps) => {
+const CustomOutlineButton = ({ type, title, variant, full }: ButtonProps) => {
 	return (
 		<Link
 			className={`flexCenter gap-3 rounded-lg border ${variant} ${
 				full && "w-full"
 			}`}
 			type={type}
-			href="/auth/signup"
+			href="/auth/login"
 		>
 			<label className="bold-16 whitespace-nowrap cursor-pointer">
 				{title}
@@ -24,4 +24,4 @@ const CustomButton = ({ type, title, variant, full }: ButtonProps) => {
 	);
 };
 
-export default CustomButton;
+export default CustomOutlineButton;
